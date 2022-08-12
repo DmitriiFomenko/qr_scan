@@ -1,9 +1,12 @@
-import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_scan/ui/pages/qr_scan/widgets/build_qr_view.dart';
+import 'package:qr_scan/ui/pages/qr_scan/widgets/flash_button.dart';
+import 'package:qr_scan/ui/pages/qr_scan/widgets/flip_camera_button.dart';
+import 'package:qr_scan/ui/pages/qr_scan/widgets/pause_button.dart';
+import 'package:qr_scan/ui/pages/qr_scan/widgets/start_button.dart';
 import 'package:qr_scan/utils/constanst/string/app_token.dart';
 
 class QRViewExample extends StatefulWidget {
@@ -34,7 +37,14 @@ class _QRViewExampleState extends State<QRViewExample> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Expanded(flex: 4, child: _buildQrView(context)),
+          Expanded(
+            flex: 4,
+            child: BuildQrView(
+              context: context,
+              qrKey: qrKey,
+              onQRViewCreated: _onQRViewCreated,
+            ),
+          ),
           Expanded(
             flex: 1,
             child: FittedBox(
@@ -48,67 +58,34 @@ class _QRViewExampleState extends State<QRViewExample> {
                     const Text('Scan a code'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.toggleFlash();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getFlashStatus(),
-                              builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
-                              },
-                            )),
+                      FlashButton(
+                        controller: controller,
+                        onPressed: () async {
+                          await controller?.toggleFlash();
+                          setState(() {});
+                        },
                       ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.flipCamera();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getCameraInfo(),
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  return Text(
-                                      'Camera facing ${describeEnum(snapshot.data!)}');
-                                } else {
-                                  return const Text('loading');
-                                }
-                              },
-                            )),
-                      )
+                      FlipCameraButton(
+                        controller: controller,
+                        onPressed: () async {
+                          await controller?.flipCamera();
+                          setState(() {});
+                        },
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await controller?.pauseCamera();
-                          },
-                          child: const Text('pause',
-                              style: TextStyle(fontSize: 20)),
-                        ),
+                      PauseButton(onPressed: () async {
+                        await controller?.pauseCamera();
+                      }),
+                      StartButton(
+                        onPressed: () async {
+                          await controller?.resumeCamera();
+                        },
                       ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await controller?.resumeCamera();
-                          },
-                          child: const Text('start',
-                              style: TextStyle(fontSize: 20)),
-                        ),
-                      )
                     ],
                   ),
                 ],
@@ -120,26 +97,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     );
   }
 
-  Widget _buildQrView(BuildContext context) {
-    var scanArea = (MediaQuery.of(context).size.width < 400 ||
-            MediaQuery.of(context).size.height < 400)
-        ? 150.0
-        : 300.0;
-
-    return QRView(
-      key: qrKey,
-      onQRViewCreated: _onQRViewCreated,
-      overlay: QrScannerOverlayShape(
-          borderColor: Colors.red,
-          borderRadius: 10,
-          borderLength: 30,
-          borderWidth: 10,
-          cutOutSize: scanArea),
-      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
-    );
-  }
-
-  void tryRouteOnHome(String scanData) {
+  void _tryRouteOnHome(String scanData) {
     if (scanData == AppToken.token) {
       Navigator.of(context)
           .pushNamedAndRemoveUntil('/barrier', (Route<dynamic> route) => false);
@@ -153,18 +111,9 @@ class _QRViewExampleState extends State<QRViewExample> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        tryRouteOnHome(scanData.code!);
+        _tryRouteOnHome(scanData.code!);
       });
     });
-  }
-
-  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-    log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
-    if (!p) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('no Permission')),
-      );
-    }
   }
 
   @override
