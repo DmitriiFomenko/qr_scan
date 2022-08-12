@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qr_scan/models/barried.dart';
+import 'package:qr_scan/models/barrier.dart';
 import 'package:qr_scan/ui/pages/barrier/cubit/barrier_cubit.dart';
 import 'package:qr_scan/ui/pages/barrier/widgets/barrier_card.dart';
 import 'package:qr_scan/ui/pages/barrier/widgets/user_card.dart';

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qr_scan/models/barried.dart';
+import 'package:qr_scan/models/barrier.dart';
 import 'package:qr_scan/models/user.dart';
 import 'package:qr_scan/repositories/local_repository.dart';
 import 'package:qr_scan/repositories/user_repository.dart';

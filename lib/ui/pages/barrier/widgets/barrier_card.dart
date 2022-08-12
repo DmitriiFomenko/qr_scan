@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_scan/models/barried.dart';
+import 'package:qr_scan/models/barrier.dart';
 import 'package:qr_scan/utils/constanst/app_color.dart';
 import 'package:qr_scan/utils/constanst/string/app_string.dart';
 
