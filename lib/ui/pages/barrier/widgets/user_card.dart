@@ -20,7 +20,7 @@ class UserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColor.textFieldGray,
+      color: AppColor.backgroundCardGray,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

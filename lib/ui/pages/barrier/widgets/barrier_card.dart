@@ -18,7 +18,7 @@ class BarrierCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColor.textFieldGray,
+      color: AppColor.backgroundCardGray,
       child: Column(
         children: [
           Align(
