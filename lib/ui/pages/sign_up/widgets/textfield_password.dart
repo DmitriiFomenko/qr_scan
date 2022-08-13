@@ -27,7 +27,7 @@ class TextfieldPassword extends StatelessWidget {
     RegExp hasCharacters = RegExp('[A-Z]+');
     RegExp hasCapitalLetters = RegExp('[!?;:.,]+');
 
-    if (value!.length < 7 ||
+    if (value!.length < 8 ||
         !hasCharacters.hasMatch(value) ||
         !hasCapitalLetters.hasMatch(value)) {
       return ErrorTextField.incorrectPasswordFormat;

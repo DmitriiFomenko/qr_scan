@@ -17,7 +17,7 @@ class TextfieldLogin extends StatelessWidget {
   final TextEditingController controller;
 
   String? _validateLogin(String? value) {
-    if (value!.length < 7) {
+    if (value!.length < 8) {
       return ErrorTextField.insufficientLength;
     } else {
       return null;
