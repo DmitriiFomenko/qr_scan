@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_scan/utils/constanst/string/app_string.dart';
 
 class BuildQrView extends StatelessWidget {
   const BuildQrView({
@@ -16,10 +17,10 @@ class BuildQrView extends StatelessWidget {
   final void Function(QRViewController) onQRViewCreated;
 
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-    log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
+    log('${DateTime.now().toIso8601String()}${AppString.onPermissionSet} $p');
     if (!p) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('no Permission')),
+        const SnackBar(content: Text(AppString.noPermission)),
       );
     }
   }

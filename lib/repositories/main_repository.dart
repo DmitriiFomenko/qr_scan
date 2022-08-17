@@ -1,13 +1,13 @@
 import 'dart:convert' as convert;
 import 'dart:io' as io;
 import 'package:http/http.dart' as http;
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:qr_scan/models/user.dart';
 
 class MainRepository {
-  MainRepository();
+  const MainRepository();
 
-  final String _baseUrl = 'http://myServer.com/api';
+  static const String _baseUrl = 'http://myServer.com/api';
 
   Future<void> registerUser({required User user}) async {
     final uri = Uri.parse('$_baseUrl/users');

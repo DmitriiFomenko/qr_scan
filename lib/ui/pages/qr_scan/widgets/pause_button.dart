@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scan/utils/constanst/string/app_string.dart';
 
 class PauseButton extends StatelessWidget {
   const PauseButton({
@@ -15,7 +16,7 @@ class PauseButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         child: const Text(
-          'pause',
+          AppString.pause,
           style: TextStyle(fontSize: 20),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scan/utils/constanst/string/app_string.dart';
 
 class StartButton extends StatelessWidget {
   const StartButton({
@@ -15,7 +16,7 @@ class StartButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         child: const Text(
-          'start',
+          AppString.start,
           style: TextStyle(fontSize: 20),
         ),
       ),

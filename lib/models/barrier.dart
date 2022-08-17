@@ -1,5 +1,5 @@
 class Barrier {
-  Barrier({
+  const Barrier({
     required this.name,
     required this.status,
   });

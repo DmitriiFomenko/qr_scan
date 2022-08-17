@@ -11,4 +11,16 @@ abstract class AppString {
   static const String open = 'Open';
   static const String close = 'Close';
   static const String loginIsNotFound = 'Login is not found';
+  static const String openQrScan = 'Open QR scan';
+  static const String data = 'Data';
+  static const String invalidToken = 'Invalid token';
+  static const String scanCode = 'Scan a code';
+  static const String start = 'Start';
+  static const String pause = 'Pause';
+  static const String cameraFacing = 'Camera facing';
+  static const String loading = 'Loading';
+  static const String flash = 'Flash';
+  static const String onPermissionSet = '_onPermissionSet';
+  static const String noPermission = 'No permission';
+  static const String noImage = 'No image';
 }

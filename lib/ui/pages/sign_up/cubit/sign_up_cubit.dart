@@ -82,7 +82,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     // MainRepository mainRepository = MainRepository();
     // await mainRepository.registerUser(user: user);
 
-    LocalRepository localRepository = LocalRepository();
+    const LocalRepository localRepository = LocalRepository();
     UserRepository.user = user;
     await localRepository.saveUser(user: user);
   }

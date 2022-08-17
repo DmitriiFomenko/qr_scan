@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_scan/utils/constanst/app_color.dart';
+import 'package:qr_scan/utils/constanst/string/app_string.dart';
 import 'package:qr_scan/utils/constanst/string/app_token.dart';
 import 'package:qr_scan/utils/routes/name_routes.dart';
 
@@ -29,7 +30,7 @@ class QrPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pushNamed(NameRoutes.qrScan);
                     },
-                    child: const Text('Open QR scans'),
+                    child: const Text(AppString.openQrScan),
                   ),
                 ],
               ),

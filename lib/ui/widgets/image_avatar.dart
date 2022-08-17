@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:qr_scan/utils/constanst/string/app_string.dart';
 
 class ImageAvatar extends StatelessWidget {
   const ImageAvatar({
@@ -17,7 +18,7 @@ class ImageAvatar extends StatelessWidget {
         height: 70,
         child: Center(
           child: Text(
-            'No image',
+            AppString.noImage,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,

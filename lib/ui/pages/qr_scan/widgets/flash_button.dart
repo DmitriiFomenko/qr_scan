@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_scan/utils/constanst/string/app_string.dart';
 
 class FlashButton extends StatelessWidget {
   const FlashButton({
@@ -20,7 +21,7 @@ class FlashButton extends StatelessWidget {
         child: FutureBuilder(
           future: controller?.getFlashStatus(),
           builder: (context, snapshot) {
-            return Text('Flash: ${snapshot.data}');
+            return Text('${AppString.flash}: ${snapshot.data}');
           },
         ),
       ),

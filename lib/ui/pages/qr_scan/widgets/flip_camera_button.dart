@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_scan/utils/constanst/string/app_string.dart';
 
 class FlipCameraButton extends StatelessWidget {
   const FlipCameraButton({
@@ -22,9 +23,10 @@ class FlipCameraButton extends StatelessWidget {
           future: controller?.getCameraInfo(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
-              return Text('Camera facing ${describeEnum(snapshot.data!)}');
+              return Text(
+                  '${AppString.cameraFacing} ${describeEnum(snapshot.data!)}');
             } else {
-              return const Text('loading');
+              return const Text(AppString.loading);
             }
           },
         ),

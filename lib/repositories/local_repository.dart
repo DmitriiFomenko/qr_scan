@@ -2,11 +2,11 @@ import 'package:qr_scan/models/user.dart';
 import 'package:qr_scan/services/shared_pref.dart';
 
 class LocalRepository {
-  LocalRepository();
+  const LocalRepository();
   final String _keyUser = 'user';
 
   Future<void> saveUser({required User user}) async {
-    final prefs = SharedPref();
+    const prefs = SharedPref();
 
     prefs.saveJson(
       key: _keyUser,
@@ -15,7 +15,7 @@ class LocalRepository {
   }
 
   Future<User> loadUser() async {
-    final prefs = SharedPref();
+    const prefs = SharedPref();
     final json = await prefs.loadJson(key: _keyUser);
     final user = User.fromJsonImageLocal(json);
 
@@ -23,7 +23,7 @@ class LocalRepository {
   }
 
   Future<void> removeUser() async {
-    final prefs = SharedPref();
+    const prefs = SharedPref();
     await prefs.remove(key: _keyUser);
   }
 

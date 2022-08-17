@@ -7,6 +7,7 @@ import 'package:qr_scan/ui/pages/qr_scan/widgets/flash_button.dart';
 import 'package:qr_scan/ui/pages/qr_scan/widgets/flip_camera_button.dart';
 import 'package:qr_scan/ui/pages/qr_scan/widgets/pause_button.dart';
 import 'package:qr_scan/ui/pages/qr_scan/widgets/start_button.dart';
+import 'package:qr_scan/utils/constanst/string/app_string.dart';
 import 'package:qr_scan/utils/constanst/string/app_token.dart';
 import 'package:qr_scan/utils/routes/name_routes.dart';
 
@@ -34,6 +35,31 @@ class _QRViewExampleState extends State<QRViewExample> {
   }
 
   @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
+  void _tryRouteOnHome(String scanData) {
+    if (scanData == AppToken.token) {
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          NameRoutes.barrier, (Route<dynamic> route) => false);
+    }
+  }
+
+  void _onQRViewCreated(QRViewController controller) {
+    setState(() {
+      this.controller = controller;
+    });
+    controller.scannedDataStream.listen((scanData) {
+      setState(() {
+        result = scanData;
+        _tryRouteOnHome(scanData.code!);
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -54,9 +80,10 @@ class _QRViewExampleState extends State<QRViewExample> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   if (result != null)
-                    Text('Data: ${result!.code}. Invalid token.')
+                    Text(
+                        '${AppString.data}: ${result!.code}. ${AppString.invalidToken}.')
                   else
-                    const Text('Scan a code'),
+                    const Text(AppString.scanCode),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -96,30 +123,5 @@ class _QRViewExampleState extends State<QRViewExample> {
         ],
       ),
     );
-  }
-
-  void _tryRouteOnHome(String scanData) {
-    if (scanData == AppToken.token) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-          NameRoutes.barrier, (Route<dynamic> route) => false);
-    }
-  }
-
-  void _onQRViewCreated(QRViewController controller) {
-    setState(() {
-      this.controller = controller;
-    });
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-        _tryRouteOnHome(scanData.code!);
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
   }
 }

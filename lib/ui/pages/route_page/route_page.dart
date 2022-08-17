@@ -9,7 +9,7 @@ class RoutePage extends StatelessWidget {
   const RoutePage({Key? key}) : super(key: key);
 
   Future<String> firstPage(BuildContext context) async {
-    LocalRepository localRepository = LocalRepository();
+    const LocalRepository localRepository = LocalRepository();
     User? user = await localRepository.loadUser();
     if (user.login == 'Name') {
       return NameRoutes.signUp;

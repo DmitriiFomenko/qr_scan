@@ -10,7 +10,8 @@ import 'package:qr_scan/utils/constanst/string/app_string.dart';
 import 'package:qr_scan/utils/routes/name_routes.dart';
 
 class BarrierCubit extends Cubit<Barrier> {
-  BarrierCubit() : super(Barrier(name: 'Barrier #1', status: AppString.close)) {
+  BarrierCubit()
+      : super(const Barrier(name: 'Barrier #1', status: AppString.close)) {
     Timer.periodic(
       const Duration(seconds: 30),
       (Timer t) async {
@@ -55,7 +56,7 @@ class BarrierCubit extends Cubit<Barrier> {
   }
 
   void exitUser(BuildContext context) {
-    final localRepository = LocalRepository();
+    const localRepository = LocalRepository();
     localRepository.removeUser();
     Navigator.of(context).pushReplacementNamed(NameRoutes.signUp);
   }

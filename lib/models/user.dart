@@ -1,5 +1,5 @@
 class User {
-  User({
+  const User({
     required this.login,
     required this.password,
     required this.email,
@@ -14,8 +14,8 @@ class User {
   final String email;
   final String phone;
   final String dateBirth;
-  String? imageUrl;
-  String? imagePath;
+  final String? imageUrl;
+  final String? imagePath;
 
   Map<String, dynamic> toJson() {
     return {
