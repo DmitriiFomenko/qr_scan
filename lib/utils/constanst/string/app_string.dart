@@ -23,4 +23,5 @@ abstract class AppString {
   static const String onPermissionSet = '_onPermissionSet';
   static const String noPermission = 'No permission';
   static const String noImage = 'No image';
+  static const String avatar = 'Avatar';
 }

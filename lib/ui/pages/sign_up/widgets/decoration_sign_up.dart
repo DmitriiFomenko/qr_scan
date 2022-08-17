@@ -9,6 +9,7 @@ abstract class SignUpDecoration {
     Widget? suffixIcon,
   }) {
     return InputDecoration(
+      errorMaxLines: 10,
       suffixIcon: suffixIcon,
       labelText: labelText,
       helperText: helperText,

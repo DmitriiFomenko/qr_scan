@@ -21,7 +21,7 @@ class RowImage extends StatelessWidget {
         Column(
           children: [
             const Text(
-              'Avatar',
+              AppString.avatar,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
