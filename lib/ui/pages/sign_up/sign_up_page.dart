@@ -24,7 +24,8 @@ class SignUpPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            child: Padding(
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 340),
               padding: const EdgeInsets.symmetric(
                 horizontal: 36,
               ),

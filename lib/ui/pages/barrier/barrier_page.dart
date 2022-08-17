@@ -15,7 +15,8 @@ class BarrierPage extends StatelessWidget {
       backgroundColor: AppColor.backgroudWhite,
       body: SafeArea(
         child: Center(
-          child: Padding(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 340),
             padding: const EdgeInsets.symmetric(
               horizontal: 36,
             ),
