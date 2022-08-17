@@ -42,7 +42,7 @@ class User {
 
   factory User.fromJsonImageLocal(Map<String, dynamic> json) {
     return User(
-      login: json['login'] ?? 'Name',
+      login: json['login'] ?? '',
       password: json['password'] ?? '',
       email: json['email'] ?? '',
       phone: json['phone'] ?? '',

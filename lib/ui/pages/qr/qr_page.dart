@@ -38,6 +38,12 @@ class QrPage extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Text('Skip'),
+        onPressed: () {
+          Navigator.of(context).pushReplacementNamed(NameRoutes.barrier);
+        },
+      ),
     );
   }
 }
