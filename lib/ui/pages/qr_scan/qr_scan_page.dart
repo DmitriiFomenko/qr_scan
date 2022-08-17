@@ -8,6 +8,7 @@ import 'package:qr_scan/ui/pages/qr_scan/widgets/flip_camera_button.dart';
 import 'package:qr_scan/ui/pages/qr_scan/widgets/pause_button.dart';
 import 'package:qr_scan/ui/pages/qr_scan/widgets/start_button.dart';
 import 'package:qr_scan/utils/constanst/string/app_token.dart';
+import 'package:qr_scan/utils/routes/name_routes.dart';
 
 class QRViewExample extends StatefulWidget {
   const QRViewExample({Key? key}) : super(key: key);
@@ -99,8 +100,8 @@ class _QRViewExampleState extends State<QRViewExample> {
 
   void _tryRouteOnHome(String scanData) {
     if (scanData == AppToken.token) {
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil('/barrier', (Route<dynamic> route) => false);
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          NameRoutes.barrier, (Route<dynamic> route) => false);
     }
   }
 

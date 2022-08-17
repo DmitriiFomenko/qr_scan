@@ -7,6 +7,7 @@ import 'package:qr_scan/models/user.dart';
 import 'package:qr_scan/repositories/local_repository.dart';
 import 'package:qr_scan/repositories/user_repository.dart';
 import 'package:qr_scan/utils/constanst/string/app_string.dart';
+import 'package:qr_scan/utils/routes/name_routes.dart';
 
 class BarrierCubit extends Cubit<Barrier> {
   BarrierCubit() : super(Barrier(name: 'Barrier #1', status: AppString.close)) {
@@ -56,7 +57,7 @@ class BarrierCubit extends Cubit<Barrier> {
   void exitUser(BuildContext context) {
     final localRepository = LocalRepository();
     localRepository.removeUser();
-    Navigator.of(context).pushReplacementNamed('/sign up');
+    Navigator.of(context).pushReplacementNamed(NameRoutes.signUp);
   }
 
   String getLoginUser() {

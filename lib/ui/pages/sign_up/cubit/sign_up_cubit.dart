@@ -8,6 +8,7 @@ import 'package:qr_scan/models/user.dart';
 import 'package:qr_scan/repositories/local_repository.dart';
 import 'package:qr_scan/repositories/user_repository.dart';
 import 'package:qr_scan/ui/pages/sign_up/cubit/sign_up_state.dart';
+import 'package:qr_scan/utils/routes/name_routes.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(SignUpState());
@@ -89,7 +90,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   void tryUserRegistration(BuildContext context) {
     if (formKey.currentState!.validate()) {
       _saveUser();
-      Navigator.of(context).pushReplacementNamed('/qr');
+      Navigator.of(context).pushReplacementNamed(NameRoutes.qr);
     }
   }
 }
