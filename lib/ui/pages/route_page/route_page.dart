@@ -15,7 +15,7 @@ class RoutePage extends StatelessWidget {
       return NameRoutes.signUp;
     } else {
       UserRepository.user = user;
-      return NameRoutes.barrier;
+      return NameRoutes.qr;
     }
   }
 
